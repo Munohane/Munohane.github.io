@@ -1,41 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Bastiaan VRIJHOF - Portfolio</title>
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-          <div class="container">
-            <div class="navbar-brand">
-              <a href="#"><img src="img/logo.png" alt="logo"></a>
-            </div>
-            <button class="navbar-toggler" id="navbar-toggler">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-            <div class="navbar-collapse" id="navbar-collapse">
-              <ul class="navbar-nav">
-                <li class="nav-item"><a href="#" class="nav-link">Accueil</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">À propos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-    </header>
+    <title>Portfolio de Bastiaan</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <main>
-        <h2></h2>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+
+    
+</head>
+<body class="font-body min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- Navigation Simple (Optionnel) -->
+    <nav class="w-full py-6 px-8 flex justify-between items-center bg-opacity-50 bg-black backdrop-blur-sm fixed top-0 z-50 border-b border-white/10">
+        <div class="text-2xl font-heading font-bold text-bastiaan-gold tracking-widest">BASTIAAN</div>
+        <div class="hidden md:flex space-x-6 text-sm uppercase tracking-widest">
+            <a href="presentation.php" class="hover:text-bastiaan-gold transition-colors duration-300">Présentation</a>
+            <a href="projet.php" class="hover:text-bastiaan-gold transition-colors duration-300">Projets</a>
+            <a href="experience.php" class="hover:text-bastiaan-gold transition-colors duration-300">Expérience</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center pt-24 pb-12 px-4 w-full max-w-7xl mx-auto">
+        
+        <!-- Header Section -->
+        <div class="text-center mb-16 fade-in-up">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold mb-4">
+                Bienvenue sur le portfolio de <br class="md:hidden" />
+                <span class="text-gold-gradient">Bastiaan</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mt-6 border-t border-b border-white/10 py-4">
+                Développeur Web & Créateur d'Expériences Digitales
+            </p>
+        </div>
+
+        <!-- Cards Container -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4 md:px-0 fade-in-up" style="animation-delay: 0.3s;">
+            
+            <!-- Carte 1: Présentation -->
+            <div class="flip-card group cursor-pointer h-96">
+                <div class="flip-card-inner">
+                    <!-- Face Avant -->
+                    <div class="flip-card-front">
+                        <div class="text-bastiaan-gold text-6xl mb-6">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <h2 class="text-2xl font-heading font-bold text-white mb-2">Présentation</h2>
+                        <div class="w-12 h-1 bg-bastiaan-blue rounded mt-2"></div>
+                        <p class="text-gray-400 mt-4 text-sm">Qui suis-je ?</p>
+                    </div>
+                    <!-- Face Arrière -->
+                    <div class="flip-card-back">
+                        <h3 class="text-xl font-heading font-bold text-bastiaan-gold mb-4">À propos de moi</h3>
+                        <p class="text-gray-200 text-sm mb-8 leading-relaxed">
+                            Découvrez mon parcours, mes passions et ce qui me motive au quotidien dans l'univers du web.
+                        </p>
+                        <a href="presentation.php" class="px-6 py-2 border border-bastiaan-gold text-bastiaan-gold hover:bg-bastiaan-gold hover:text-black transition-all duration-300 rounded font-bold uppercase text-sm tracking-wider">
+                            En savoir plus
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte 2: Mes Projets -->
+            <div class="flip-card group cursor-pointer h-96">
+                <div class="flip-card-inner">
+                    <!-- Face Avant -->
+                    <div class="flip-card-front">
+                        <div class="text-bastiaan-blue text-6xl mb-6 shadow-blue-500/50 drop-shadow-lg">
+                            <i class="fa-solid fa-layer-group text-blue-500"></i>
+                        </div>
+                        <h2 class="text-2xl font-heading font-bold text-white mb-2">Mes Projets</h2>
+                        <div class="w-12 h-1 bg-bastiaan-gold rounded mt-2"></div>
+                        <p class="text-gray-400 mt-4 text-sm">Mes réalisations</p>
+                    </div>
+                    <!-- Face Arrière -->
+                    <div class="flip-card-back">
+                        <h3 class="text-xl font-heading font-bold text-bastiaan-gold mb-4">Portfolio</h3>
+                        <p class="text-gray-200 text-sm mb-8 leading-relaxed">
+                            Une galerie de mes travaux récents, du développement front-end aux applications complexes.
+                        </p>
+                        <a href="projet.php" class="px-6 py-2 border border-bastiaan-gold text-bastiaan-gold hover:bg-bastiaan-gold hover:text-black transition-all duration-300 rounded font-bold uppercase text-sm tracking-wider">
+                            Voir la galerie
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte 3: Expérience -->
+            <div class="flip-card group cursor-pointer h-96">
+                <div class="flip-card-inner">
+                    <!-- Face Avant -->
+                    <div class="flip-card-front">
+                        <div class="text-bastiaan-gold text-6xl mb-6">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <h2 class="text-2xl font-heading font-bold text-white mb-2">Expérience</h2>
+                        <div class="w-12 h-1 bg-bastiaan-blue rounded mt-2"></div>
+                        <p class="text-gray-400 mt-4 text-sm">Mon parcours pro</p>
+                    </div>
+                    <!-- Face Arrière -->
+                    <div class="flip-card-back">
+                        <h3 class="text-xl font-heading font-bold text-bastiaan-gold mb-4">Carrière</h3>
+                        <p class="text-gray-200 text-sm mb-8 leading-relaxed">
+                            Un résumé de mes expériences professionnelles, mes compétences techniques et mes diplômes.
+                        </p>
+                        <a href="experience.php" class="px-6 py-2 border border-bastiaan-gold text-bastiaan-gold hover:bg-bastiaan-gold hover:text-black transition-all duration-300 rounded font-bold uppercase text-sm tracking-wider">
+                            Consulter le CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </main>
 
-    <footer>
-      <p>Copyright © 2025 Bastiaan VRIJHOF</p>
+    <footer class="w-full py-6 text-center text-gray-600 text-sm border-t border-white/5">
+        <p>&copy; 2023 Bastiaan. Tous droits réservés.</p>
     </footer>
-    
+
 </body>
 </html>
