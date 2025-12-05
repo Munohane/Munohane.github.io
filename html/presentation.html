@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation - Bastiaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="css/style_presentation.css">
+
+    
+</head>
+<body class="font-body min-h-screen flex flex-col">
+
+    <!-- Navigation (Identique à l'index) -->
+    <nav class="w-full py-6 px-8 flex justify-between items-center bg-black/80 backdrop-blur-md fixed top-0 z-50 border-b border-white/10">
+        <a href="index.html" class="text-2xl font-heading font-bold text-bastiaan-gold tracking-widest hover:text-white transition-colors">BASTIAAN</a>
+        <div class="hidden md:flex space-x-6 text-sm uppercase tracking-widest">
+            <a href="presentation.php" class="text-bastiaan-gold font-bold border-b border-bastiaan-gold">Présentation</a>
+            <a href="projet.php" class="hover:text-bastiaan-gold transition-colors duration-300">Projets</a>
+            <a href="experience.php" class="hover:text-bastiaan-gold transition-colors duration-300">Expérience</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-16 px-4 w-full max-w-6xl mx-auto">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <!-- Colonne Gauche : Profil & Info Rapides -->
+            <div class="lg:col-span-4 space-y-8">
+                <!-- Photo de Profil -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-bastiaan-blue to-bastiaan-gold rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative w-64 h-64 mx-auto rounded-full overflow-hidden border-4 border-gray-900 bg-gray-800 flex items-center justify-center">
+                        <!-- Placeholder Image - À REMPLACER -->
+                        <img src="munohane.github.io/img/profil.JPG" alt="Photo de Bastiaan" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Bio Rapide -->
+                <div class="text-center">
+                    <h1 class="text-3xl font-heading font-bold text-white mb-2">Bastiaan</h1>
+                    <p class="text-bastiaan-gold uppercase tracking-widest text-sm font-bold mb-4">Développeur Mobile & Web</p>
+                    <div class="flex justify-center space-x-4 mb-6">
+                        <!-- Linkedin -->
+                        <a href="https://www.linkedin.com/in/bastiaan-vrijhof-388641256/?locale=fr_FR" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-[#0077b5] hover:text-white transition-all border border-white/10">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <!-- Mail (Exemple) -->
+                        <a href="mailto:bastiaan.vrijhof@etu.univ-lyon1.fr" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-bastiaan-gold hover:text-black transition-all border border-white/10">
+                            <i class="fa-regular fa-envelope"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Badge de recherche -->
+                    <div class="inline-block px-4 py-2 bg-bastiaan-blue/20 border border-bastiaan-blue rounded-lg">
+                        <span class="flex items-center text-blue-200 text-sm">
+                            <span class="relative flex h-3 w-3 mr-2">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                            </span>
+                            Recherche Stage / Alternance
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Passions / Hobbies -->
+                <div class="glass-card p-6 rounded-xl">
+                    <h3 class="text-lg font-heading text-bastiaan-gold mb-4 border-b border-white/10 pb-2">Passions</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-bastiaan-gold">
+                                <i class="fa-solid fa-volleyball"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">Volley-ball</p>
+                                <p class="text-xs text-gray-400">Ma plus grande passion, esprit d'équipe.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-bastiaan-blue">
+                                <i class="fa-solid fa-gamepad"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">Jeux Vidéo</p>
+                                <p class="text-xs text-gray-400">Stratégie et compétition.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne Droite : Détails -->
+            <div class="lg:col-span-8 space-y-12">
+                
+                <!-- Section Bio -->
+                <section>
+                    <h2 class="text-4xl font-heading text-white mb-6">À propos <span class="text-gold-gradient">de moi</span></h2>
+                    <div class="glass-card p-8 rounded-xl text-gray-300 leading-relaxed">
+                        <p class="mb-4">
+                            Actuellement étudiant en <strong>3ème année de BUT Informatique</strong> avec une spécialisation en <span class="text-bastiaan-gold">développement mobile</span>, je suis passionné par la création d'applications intuitives et performantes.
+                        </p>
+                        <p class="mb-4">
+                            Mon parcours a débuté avec un Bac <strong>STI2D spécialité SIN</strong>, qui m'a donné le goût de la technique et de l'innovation. Aujourd'hui, je cherche à mettre en pratique mes compétences en <span class="text-white font-bold">Kotlin, Flutter et Java</span> au sein d'une entreprise dynamique.
+                        </p>
+                        <p>
+                            Je suis activement à la recherche d'un <strong>stage ouvert à l'apprentissage</strong> pour finaliser mon cursus et apporter ma valeur ajoutée à vos projets.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section Formation -->
+                <section>
+                    <h2 class="text-2xl font-heading text-white mb-6 flex items-center">
+                        <i class="fa-solid fa-graduation-cap text-bastiaan-gold mr-3"></i> Formation
+                    </h2>
+                    <div class="relative pl-8 space-y-8">
+                        <div class="timeline-line ml-2"></div>
+                        
+                        <!-- Item 1 -->
+                        <div class="relative">
+                            <div class="absolute -left-8 w-4 h-4 bg-bastiaan-gold rounded-full mt-1.5 border-2 border-black"></div>
+                            <h3 class="text-xl font-bold text-white">BUT Informatique - Spécialité Mobile</h3>
+                            <p class="text-bastiaan-blue font-bold text-sm mb-1">En cours (3ème année)</p>
+                            <p class="text-gray-400 text-sm">Approfondissement du développement d'applications natives et cross-platform, gestion de projet agile.</p>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="relative">
+                            <div class="absolute -left-8 w-4 h-4 bg-gray-600 rounded-full mt-1.5 border-2 border-black"></div>
+                            <h3 class="text-xl font-bold text-white">Bac STI2D - Spécialité SIN</h3>
+                            <p class="text-gray-500 text-sm mb-1">Obtenu en 2022</p>
+                            <p class="text-gray-400 text-sm">Systèmes d'Information et Numérique. Premiers pas dans la logique de programmation et l'électronique.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section Compétences -->
+                <section>
+                    <h2 class="text-2xl font-heading text-white mb-6 flex items-center">
+                        <i class="fa-solid fa-code text-bastiaan-gold mr-3"></i> Compétences Techniques
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Mobile & Backend -->
+                        <div class="glass-card p-6 rounded-xl">
+                            <h3 class="text-bastiaan-blue font-bold uppercase text-sm tracking-wider mb-4 border-b border-gray-700 pb-2">Développement Mobile</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-900/50 text-blue-200 rounded text-sm border border-blue-500/30">Kotlin</span>
+                                <span class="px-3 py-1 bg-blue-900/50 text-blue-200 rounded text-sm border border-blue-500/30">Flutter</span>
+                                <span class="px-3 py-1 bg-red-900/30 text-red-200 rounded text-sm border border-red-500/30">Java</span>
+                                <span class="px-3 py-1 bg-yellow-900/30 text-yellow-200 rounded text-sm border border-yellow-500/30">SQL</span>
+                                <span class="px-3 py-1 bg-green-900/30 text-green-200 rounded text-sm border border-green-500/30">Android Studio</span>
+                                <span class="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm border border-gray-600">IntelliJ</span>
+                            </div>
+                        </div>
+
+                        <!-- Web & Outils -->
+                        <div class="glass-card p-6 rounded-xl">
+                            <h3 class="text-bastiaan-gold font-bold uppercase text-sm tracking-wider mb-4 border-b border-gray-700 pb-2">Web & Outils</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-gray-700 text-gray-200 rounded text-sm">HTML5</span>
+                                <span class="px-3 py-1 bg-gray-700 text-gray-200 rounded text-sm">CSS3</span>
+                                <span class="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm border border-gray-600">Git</span>
+                                <span class="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm border border-gray-600">VS Code</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full py-6 text-center text-gray-600 text-sm border-t border-white/5 bg-black">
+        <p>&copy; 2025 Bastiaan. Tous droits réservés.</p>
+    </footer>
+
+    <script src="js/script_presentation.js" defer></script>
+</body>
+</html>

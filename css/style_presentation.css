@@ -1,0 +1,30 @@
+body {
+    background-color: #050505;
+    background-image: radial-gradient(circle at 50% 0%, #111827 0%, #000000 80%);
+    color: #e5e7eb;
+}
+
+.text-gold-gradient {
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Effet de verre pour les cartes */
+.glass-card {
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Timeline */
+.timeline-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #1e3a8a, #d4af37);
+}
