@@ -1,0 +1,18 @@
+body {
+    background-color: #050505;
+    background-image: radial-gradient(circle at 50% 0%, #111827 0%, #000000 80%);
+    color: #e5e7eb;
+}
+
+.text-gold-gradient {
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.glass-panel {
+    background: rgba(20, 20, 25, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
