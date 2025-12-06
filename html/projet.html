@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets - Bastiaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style_projet.css">
+</head>
+<body class="font-body min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="w-full py-6 px-8 flex justify-between items-center bg-black/80 backdrop-blur-md fixed top-0 z-50 border-b border-white/10">
+        <a href="index.html" class="text-2xl font-heading font-bold text-bastiaan-gold tracking-widest hover:text-white transition-colors">BASTIAAN</a>
+        <div class="hidden md:flex space-x-6 text-sm uppercase tracking-widest">
+            <a href="presentation.php" class="hover:text-bastiaan-gold transition-colors duration-300">Présentation</a>
+            <a href="projet.php" class="text-bastiaan-gold font-bold border-b border-bastiaan-gold">Projets</a>
+            <a href="experience.php" class="hover:text-bastiaan-gold transition-colors duration-300">Expérience</a>
+        </div>
+    </nav>
+
+    <!-- Header Page -->
+    <header class="pt-32 pb-12 text-center px-4">
+        <h1 class="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
+            Mes <span class="text-gold-gradient">Réalisations</span>
+        </h1>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+            Une sélection de mes travaux académiques et personnels, allant du développement mobile à l'IoT et la réalité augmentée.
+        </p>
+    </header>
+
+    <!-- Grille de Projets -->
+    <main class="flex-grow px-4 pb-20 w-full max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- ========================================== -->
+            <!-- PROJET 1 : HandicapXR -->
+            <!-- ========================================== -->
+            <article class="project-card rounded-xl p-6 flex flex-col h-full">
+                <div class="mb-4 flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center text-bastiaan-gold text-2xl">
+                        <i class="fa-solid fa-vr-cardboard"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase text-gray-500 tracking-wider">Vision Pro</span>
+                </div>
+                
+                <h2 class="text-xl font-bold text-white mb-3">HandicapXR</h2>
+                
+                <!-- Tags Technologies -->
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tech-tag">SwiftUI</span>
+                    <span class="tech-tag">Xcode</span>
+                    <span class="tech-tag">VisionOS</span>
+                </div>
+
+                <p class="text-gray-400 text-sm mb-6 flex-grow">
+                    Application de sensibilisation pour Apple Vision Pro. Simulation immersive des handicaps invisibles (glaucome, DMLA, schizophrénie) à travers des tâches quotidiennes altérées.
+                </p>
+
+                <a href="projet-1.php" class="inline-flex items-center text-bastiaan-gold hover:text-white transition-colors font-bold text-sm uppercase tracking-wider group">
+                    Voir le détail
+                    <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </article>
+
+            <!-- ========================================== -->
+            <!-- PROJET 2 : Site Association -->
+            <!-- ========================================== -->
+            <article class="project-card rounded-xl p-6 flex flex-col h-full">
+                <div class="mb-4 flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center text-blue-400 text-2xl">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase text-gray-500 tracking-wider">Web Fullstack</span>
+                </div>
+                
+                <h2 class="text-xl font-bold text-white mb-3">Gestion Association</h2>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tech-tag">CakePHP</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">MVC</span>
+                </div>
+
+                <p class="text-gray-400 text-sm mb-6 flex-grow">
+                    Plateforme complète de gestion événementielle. Authentification sécurisée, inscriptions des bénévoles et tableau de bord administrateur pour gérer les profils et événements.
+                </p>
+
+                <a href="projet-2.php" class="inline-flex items-center text-bastiaan-gold hover:text-white transition-colors font-bold text-sm uppercase tracking-wider group">
+                    Voir le détail
+                    <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </article>
+
+            <!-- ========================================== -->
+            <!-- PROJET 3 : Serious Game -->
+            <!-- ========================================== -->
+            <article class="project-card rounded-xl p-6 flex flex-col h-full">
+                <div class="mb-4 flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center text-red-500 text-2xl">
+                        <i class="fa-solid fa-fire-extinguisher"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase text-gray-500 tracking-wider">Desktop Game</span>
+                </div>
+                
+                <h2 class="text-xl font-bold text-white mb-3">Incendie Simulation</h2>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">Processing</span>
+                    <span class="tech-tag">OOP</span>
+                </div>
+
+                <p class="text-gray-400 text-sm mb-6 flex-grow">
+                    Jeu sérieux éducatif sur les réflexes en cas d'incendie. Gestion de rôles (guides vs guidés), pathfinding et contrainte de temps avant propagation du feu.
+                </p>
+
+                <a href="projet-3.php" class="inline-flex items-center text-bastiaan-gold hover:text-white transition-colors font-bold text-sm uppercase tracking-wider group">
+                    Voir le détail
+                    <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </article>
+
+            <!-- ========================================== -->
+            <!-- PROJET 4 : Serre Connectée -->
+            <!-- ========================================== -->
+            <article class="project-card rounded-xl p-6 flex flex-col h-full">
+                <div class="mb-4 flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center text-green-500 text-2xl">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase text-gray-500 tracking-wider">IoT / Embarqué</span>
+                </div>
+                
+                <h2 class="text-xl font-bold text-white mb-3">Serre Autonome</h2>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tech-tag">C++</span>
+                    <span class="tech-tag">Arduino</span>
+                    <span class="tech-tag">Capteurs</span>
+                </div>
+
+                <p class="text-gray-400 text-sm mb-6 flex-grow">
+                    Conception d'une serre intelligente avec traqueur solaire, contrôle d'accès RFID et surveillance d'humidité/température. Pilotage manuel ou auto via mobile.
+                </p>
+
+                <a href="projet-4.php" class="inline-flex items-center text-bastiaan-gold hover:text-white transition-colors font-bold text-sm uppercase tracking-wider group">
+                    Voir le détail
+                    <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </article>
+
+            <!-- ========================================== -->
+            <!-- PROJET 5 : Runner -->
+            <!-- ========================================== -->
+            <article class="project-card rounded-xl p-6 flex flex-col h-full">
+                <div class="mb-4 flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center text-purple-500 text-2xl">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase text-gray-500 tracking-wider">Jeu Vidéo</span>
+                </div>
+                
+                <h2 class="text-xl font-bold text-white mb-3">Endless Runner</h2>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tech-tag">Godot</span>
+                    <span class="tech-tag">GDScript</span>
+                    <span class="tech-tag">2D</span>
+                </div>
+
+                <p class="text-gray-400 text-sm mb-6 flex-grow">
+                    Développement d'un jeu de type "Runner" dynamique. Gestion de la physique, des obstacles procéduraux et du score en temps réel sous le moteur Godot.
+                </p>
+
+                <a href="projet-5.php" class="inline-flex items-center text-bastiaan-gold hover:text-white transition-colors font-bold text-sm uppercase tracking-wider group">
+                    Voir le détail
+                    <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </article>
+
+            <!-- ========================================== -->
+            <!-- PROJET 6 : App Pokémon -->
+            <!-- ========================================== -->
+            <article class="project-card rounded-xl p-6 flex flex-col h-full">
+                <div class="mb-4 flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center text-yellow-500 text-2xl">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase text-gray-500 tracking-wider">Android Natif</span>
+                </div>
+                
+                <h2 class="text-xl font-bold text-white mb-3">PokéCollection</h2>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tech-tag">Kotlin</span>
+                    <span class="tech-tag">Android Studio</span>
+                    <span class="tech-tag">API REST</span>
+                </div>
+
+                <p class="text-gray-400 text-sm mb-6 flex-grow">
+                    App de collection gamifiée. Système d'ouverture de boosters temporels, missions quotidiennes et intégration d'une API personnalisée pour les données des Pokémon.
+                </p>
+
+                <a href="projet-6.php" class="inline-flex items-center text-bastiaan-gold hover:text-white transition-colors font-bold text-sm uppercase tracking-wider group">
+                    Voir le détail
+                    <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </article>
+
+            <!-- ========================================== -->
+            <!-- POUR AJOUTER UN PROJET : Copier de <article> à </article> -->
+            <!-- et coller ici. Changer les textes et liens. -->
+            <!-- ========================================== -->
+
+        </div>
+    </main>
+
+    <footer class="w-full py-6 text-center text-gray-600 text-sm border-t border-white/5 bg-black mt-auto">
+        <p>&copy; 2023 Bastiaan. Tous droits réservés.</p>
+    </footer>
+    <script src="/js/script.js"></script>
+</body>
+</html>

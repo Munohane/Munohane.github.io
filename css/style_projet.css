@@ -1,0 +1,52 @@
+body {
+    background-color: #050505;
+    background-image: radial-gradient(circle at 50% 100%, #111827 0%, #000000 80%);
+    color: #e5e7eb;
+}
+
+.text-gold-gradient {
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Style des cartes projets */
+.project-card {
+    background: linear-gradient(145deg, #0f1115, #161b22);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: #d4af37;
+    box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.15);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #1e3a8a, #d4af37);
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.tech-tag {
+    background: rgba(30, 58, 138, 0.2);
+    border: 1px solid rgba(30, 58, 138, 0.5);
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 999px;
+    color: #93c5fd;
+}
