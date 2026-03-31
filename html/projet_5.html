@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Runner - Bastiaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style_projet_dev.css">
+</head>
+<body class="font-body min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="w-full py-6 px-8 flex justify-between items-center bg-black/80 backdrop-blur-md fixed top-0 z-50 border-b border-white/10">
+        <a href="index.html" class="text-2xl font-heading font-bold text-bastiaan-gold tracking-widest">BASTIAAN</a>
+        <div class="hidden md:flex space-x-6 text-sm uppercase tracking-widest">
+            <a href="presentation.html" class="hover:text-bastiaan-gold transition-colors">Présentation</a>
+            <a href="projet.html" class="text-bastiaan-gold font-bold">Projets</a>
+            <a href="experience.html" class="hover:text-bastiaan-gold transition-colors">Expérience</a>
+        </div>
+    </nav>
+
+    <!-- Header Projet -->
+    <header class="pt-32 pb-12 px-4 relative overflow-hidden">
+        <!-- Background Icon Décorative -->
+        <div class="absolute top-20 right-10 text-9xl opacity-5 text-purple-500">
+            <i class="fa-solid fa-person-running"></i>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+            <a href="projet.html" class="inline-flex items-center text-gray-400 hover:text-bastiaan-gold mb-6 transition-colors">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Retour aux projets
+            </a>
+            
+            <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
+                Endless Runner
+            </h1>
+            <p class="text-xl text-bastiaan-gold max-w-2xl">
+                Jeu de course infinie sous un ciel étoilé
+            </p>
+        </div>
+    </header>
+
+    <!-- Contenu Principal -->
+    <main class="flex-grow px-4 pb-20 w-full max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            
+            <!-- Colonne Gauche : Description Détaillée -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Section Présentation -->
+                <section class="glass-panel p-8 rounded-xl border-l-4 border-bastiaan-gold">
+                    <h2 class="text-2xl font-heading font-bold text-white mb-6">À propos du projet</h2>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        Développement d'un jeu vidéo de type "Endless Runner" prenant place sur un parcours en herbe, de nuit, sous un ciel étoilé. Ce projet scolaire a été réalisé dans le but principal d'apprendre et de prendre en main le moteur de jeu <strong class="text-white">Godot</strong>.
+                    </p>
+                </section>
+
+                <!-- Section Points Clés -->
+                <section>
+                    <h3 class="text-xl font-heading font-bold text-white mb-4 flex items-center">
+                        <i class="fa-solid fa-list-check text-bastiaan-blue mr-3"></i> Mécaniques de Gameplay
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start bg-gray-900/50 p-4 rounded-lg border border-white/5">
+                            <i class="fa-solid fa-check text-bastiaan-gold mt-1 mr-3"></i>
+                            <p class="text-gray-400 text-sm"><strong class="text-white">Génération Procédurale :</strong> Le niveau se construit à l'infini avec une logique alternant toujours un obstacle généré aléatoirement suivi d'une plateforme libre pour respirer.</p>
+                        </div>
+                        <div class="flex items-start bg-gray-900/50 p-4 rounded-lg border border-white/5">
+                            <i class="fa-solid fa-check text-bastiaan-gold mt-1 mr-3"></i>
+                            <p class="text-gray-400 text-sm"><strong class="text-white">Déplacement par colonnes :</strong> Le système de mouvement est basé sur des "lanes" (colonnes), forçant le joueur à se décaler rapidement de gauche à droite pour esquiver.</p>
+                        </div>
+                        <div class="flex items-start bg-gray-900/50 p-4 rounded-lg border border-white/5">
+                            <i class="fa-solid fa-check text-bastiaan-gold mt-1 mr-3"></i>
+                            <p class="text-gray-400 text-sm"><strong class="text-white">Difficulté croissante :</strong> La vitesse de défilement du parcours augmente progressivement avec le temps, testant ainsi les réflexes du joueur sur la durée.</p>
+                        </div>
+                        <div class="flex items-start bg-gray-900/50 p-4 rounded-lg border border-white/5">
+                            <i class="fa-solid fa-check text-bastiaan-gold mt-1 mr-3"></i>
+                            <p class="text-gray-400 text-sm"><strong class="text-white">Système de Score :</strong> Le joueur est récompensé par un score calculé en temps réel en fonction de la distance totale parcourue.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Vidéo de présentation en boucle -->
+                <section class="mt-8">
+                    <h3 class="text-xl font-heading font-bold text-white mb-4">Aperçu du Jeu</h3>
+                    <div class="w-full bg-black rounded-lg border border-white/10 overflow-hidden relative group shadow-lg flex justify-center items-center">
+                        <!-- 
+                            Assurez-vous de remplacer "chemin/vers/votre/video.mp4" par le vrai chemin.
+                        -->
+                        <video src="chemin/vers/votre/video.mp4" autoplay loop muted playsinline class="w-full h-[400px] object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                            Votre navigateur ne supporte pas la balise vidéo.
+                        </video>
+                        
+                        <!-- Icône superposée (disparaît au survol) -->
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-100 group-hover:opacity-0 transition-opacity duration-500">
+                            <i class="fa-solid fa-play text-4xl text-white/20"></i>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2 italic">* Extrait vidéo du gameplay et de la génération procédurale</p>
+                </section>
+            </div>
+
+            <!-- Colonne Droite : Infos Techniques (Sidebar) -->
+            <div class="lg:col-span-1">
+                <div class="glass-panel p-6 rounded-xl sticky top-28">
+                    <h3 class="text-lg font-bold text-white mb-6 uppercase tracking-wider border-b border-gray-700 pb-2">
+                        Fiche Technique
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Type -->
+                        <div>
+                            <p class="text-gray-500 text-xs uppercase font-bold mb-1">Type de projet</p>
+                            <p class="text-white font-medium">Jeu Vidéo</p>
+                        </div>
+
+                        <!-- Stack Technique -->
+                        <div>
+                            <p class="text-gray-500 text-xs uppercase font-bold mb-2">Moteur & Langages</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-purple-900/30 text-purple-300 rounded text-xs border border-purple-500/30">Godot Engine</span>
+                                <span class="px-3 py-1 bg-indigo-900/30 text-indigo-300 rounded text-xs border border-indigo-500/30">GDScript</span>
+                            </div>
+                        </div>
+
+                        <!-- Contexte -->
+                        <div>
+                            <p class="text-gray-500 text-xs uppercase font-bold mb-1">Contexte</p>
+                            <p class="text-white font-medium text-sm">Projet Scolaire / Apprentissage</p>
+                        </div>
+
+                        <!-- Boutons d'action (Seulement GitHub ici, pas de lien pour jouer) -->
+                        <div class="pt-4 border-t border-gray-700 mt-4 flex flex-col gap-3">
+                            <a href="#" class="w-full py-3 bg-white text-black font-bold text-center rounded hover:bg-bastiaan-gold transition-colors uppercase text-sm tracking-wider">
+                                <i class="fa-brands fa-github mr-2"></i> Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="w-full py-6 text-center text-gray-600 text-sm border-t border-white/5 bg-black">
+        <p>&copy; 2026 Bastiaan. Tous droits réservés.</p>
+    </footer>
+    <script src="/js/script.js"></script>
+
+</body>
+</html>
