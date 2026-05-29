@@ -81,6 +81,47 @@
                         </div>
                     </div>
                 </section>
+                <!-- Zoom Technique -->
+                <section class="mt-8">
+                    <h3 class="text-xl font-heading font-bold text-white mb-4 flex items-center">
+                        <i class="fa-solid fa-magnifying-glass-code text-bastiaan-gold mr-3"></i> Zoom Technique
+                    </h3>
+                    <div class="glass-panel p-6 rounded-xl space-y-6">
+                        <div>
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-2">Défi : Tracking solaire avec deux servomoteurs</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Le traqueur solaire utilise <strong class="text-white">4 photorésistances</strong> disposées en croix sur le panneau. En comparant les valeurs de luminosité entre les paires haut/bas et gauche/droite, l'Arduino calcule l'erreur angulaire et corrige la position de deux servomoteurs (axe horizontal et vertical). Un seuil de tolérance évite les micro-oscillations inutiles qui usent les servos.
+                            </p>
+                        </div>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-3">Extrait — Logique de tracking (C++ / Arduino)</p>
+                            <pre class="bg-black/60 rounded-lg p-4 text-xs text-green-300 overflow-x-auto border border-white/10 leading-relaxed"><code>// Lecture des 4 capteurs de lumière
+int topLeft     = analogRead(A0);
+int topRight    = analogRead(A1);
+int bottomLeft  = analogRead(A2);
+int bottomRight = analogRead(A3);
+
+int avgTop    = (topLeft + topRight) / 2;
+int avgBottom = (bottomLeft + bottomRight) / 2;
+int avgLeft   = (topLeft + bottomLeft) / 2;
+int avgRight  = (topRight + bottomRight) / 2;
+
+int errorV = avgTop - avgBottom;   // Erreur verticale
+int errorH = avgLeft - avgRight;   // Erreur horizontale
+
+// Correction uniquement si l'erreur dépasse le seuil
+if (abs(errorV) > TOLERANCE) servoV.write(servoV.read() + (errorV > 0 ? 1 : -1));
+if (abs(errorH) > TOLERANCE) servoH.write(servoH.read() + (errorH > 0 ? 1 : -1));</code></pre>
+                        </div>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-2">Communication et modes de pilotage</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                L'Arduino communique via <strong class="text-white">port série</strong> avec un module Wi-Fi (ESP8266) qui expose une API REST minimale. L'interface web et l'app mobile envoient des commandes JSON pour basculer entre le mode <em>automatique</em> (tracking actif) et le mode <em>manuel</em> (angles imposés), avec retour d'état en temps réel des capteurs.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Vidéo de présentation en boucle -->
                 <section class="mt-8">
                     <h3 class="text-xl font-heading font-bold text-white mb-4">Démonstration du Prototype</h3>
@@ -101,26 +142,7 @@
                     <p class="text-xs text-gray-500 mt-2 italic">* Vidéo de démonstration du système en fonctionnement</p>
                 </section>
 
-                <!-- Galerie d'images -->
-                <section class="mt-8">
-                    <h3 class="text-xl font-heading font-bold text-white mb-4">Aperçu du Prototypage</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="h-48 bg-gray-800 rounded-lg flex items-center justify-center border border-white/10 group overflow-hidden relative">
-                            <i class="fa-solid fa-microchip text-3xl text-gray-600 group-hover:opacity-0 transition-opacity"></i>
-                            <div class="absolute inset-0 bg-bastiaan-blue/20 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                <span class="text-white font-bold">Circuit Arduino</span>
-                                <span class="text-xs text-gray-300 mt-1">Image à insérer</span>
-                            </div>
-                        </div>
-                        <div class="h-48 bg-gray-800 rounded-lg flex items-center justify-center border border-white/10 group overflow-hidden relative">
-                            <i class="fa-solid fa-mobile-button text-3xl text-gray-600 group-hover:opacity-0 transition-opacity"></i>
-                             <div class="absolute inset-0 bg-bastiaan-blue/20 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                <span class="text-white font-bold">Interface de contrôle</span>
-                                <span class="text-xs text-gray-300 mt-1">Image à insérer</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
             </div>
 
             <!-- Colonne Droite : Infos Techniques (Sidebar) -->
@@ -156,9 +178,9 @@
 
                         <!-- Boutons d'action -->
                         <div class="pt-4 border-t border-gray-700 mt-4 flex flex-col gap-3">
-                            <a href="#" class="w-full py-3 bg-white text-black font-bold text-center rounded hover:bg-bastiaan-gold transition-colors uppercase text-sm tracking-wider">
+                            <button onclick="openPrivateModal()" class="w-full py-3 bg-white text-black font-bold text-center rounded hover:bg-bastiaan-gold transition-colors uppercase text-sm tracking-wider flex items-center justify-center">
                                 <i class="fa-brands fa-github mr-2"></i> Voir le code
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -171,5 +193,41 @@
         <p>&copy; 2026 Bastiaan. Tous droits réservés.</p>
     </footer>
     <script src="/js/script.js"></script>
+
+    <!-- FENÊTRE MODALE Dépôt Privé -->
+    <div id="privateModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm">
+        <div class="glass-panel p-8 rounded-xl max-w-md w-full mx-4 border border-bastiaan-gold modal-animate relative shadow-2xl">
+            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-black border-2 border-bastiaan-gold w-14 h-14 rounded-full flex items-center justify-center text-bastiaan-gold text-2xl">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div class="mt-6 text-center">
+                <h3 class="text-2xl font-heading font-bold text-white mb-4">Dépôt Privé</h3>
+                <p class="text-gray-300 text-sm mb-8 leading-relaxed">
+                    Ce projet est hébergé sur un <strong class="text-white">dépôt GitHub privé</strong>.<br><br>
+                    Le code source n'est pas accessible publiquement. N'hésitez pas à me <a href="mailto:bastiaan.vrijhof@etu.univ-lyon1.fr" class="text-bastiaan-gold underline hover:text-white transition-colors">contacter directement</a> si vous souhaitez en savoir plus sur l'implémentation.
+                </p>
+                <button onclick="closePrivateModal()" class="w-full py-3 bg-bastiaan-gold text-black font-bold rounded hover:bg-white transition-colors uppercase text-sm tracking-wider">
+                    J'ai compris
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openPrivateModal() {
+            const modal = document.getElementById('privateModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        function closePrivateModal() {
+            const modal = document.getElementById('privateModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('privateModal');
+            if (event.target == modal) closePrivateModal();
+        });
+    </script>
 </body>
 </html>

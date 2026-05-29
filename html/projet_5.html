@@ -81,6 +81,43 @@
                     </div>
                 </section>
                 
+                <!-- Zoom Technique -->
+                <section class="mt-8">
+                    <h3 class="text-xl font-heading font-bold text-white mb-4 flex items-center">
+                        <i class="fa-solid fa-magnifying-glass-code text-bastiaan-gold mr-3"></i> Zoom Technique
+                    </h3>
+                    <div class="glass-panel p-6 rounded-xl space-y-6">
+                        <div>
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-2">Génération procédurale infinie</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Le niveau ne stocke jamais plus de <strong class="text-white">N chunks actifs</strong> en mémoire. Un système de <em>pooling</em> recycle les segments qui sortent du champ de caméra : au lieu de les supprimer et d'en créer de nouveaux (coûteux en GC), ils sont repositionnés en tête de file avec un nouvel obstacle tiré aléatoirement. Cela garantit des performances stables quelle que soit la durée de la partie.
+                            </p>
+                        </div>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-3">Extrait — Recyclage des chunks (GDScript)</p>
+                            <pre class="bg-black/60 rounded-lg p-4 text-xs text-green-300 overflow-x-auto border border-white/10 leading-relaxed"><code># Déplace le chunk le plus en arrière vers l'avant du niveau
+func recycle_chunk(chunk: Node3D) -> void:
+    var last_chunk = active_chunks.back()
+    # Repositionner juste après le dernier chunk actif
+    chunk.position.z = last_chunk.position.z - CHUNK_LENGTH
+    # Choisir aléatoirement : obstacle ou libre (alternance forcée)
+    if last_was_obstacle:
+        chunk.set_type(ChunkType.FREE)
+    else:
+        chunk.set_type(randi() % obstacle_pool.size())
+    last_was_obstacle = !last_was_obstacle
+    active_chunks.pop_front()
+    active_chunks.push_back(chunk)</code></pre>
+                        </div>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-2">Difficulté progressive</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                La vitesse de défilement est stockée dans un <strong class="text-white">autoload global</strong> (<code class="text-yellow-300">GameState.gd</code>) et augmente via une courbe exponentielle douce. Tous les systèmes (chunks, caméra, score) lisent cette valeur unique, ce qui centralise le réglage de la difficulté en un seul endroit.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Vidéo de présentation en boucle -->
                 <section class="mt-8">
                     <h3 class="text-xl font-heading font-bold text-white mb-4">Aperçu du Jeu</h3>
@@ -88,7 +125,7 @@
                         <!-- 
                             Assurez-vous de remplacer "chemin/vers/votre/video.mp4" par le vrai chemin.
                         -->
-                        <video src="chemin/vers/votre/video.mp4" autoplay loop muted playsinline class="w-full h-[400px] object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                        <video src="/video/runner.mp4" autoplay loop muted playsinline class="w-full h-[400px] object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500">
                             Votre navigateur ne supporte pas la balise vidéo.
                         </video>
                         
@@ -130,11 +167,10 @@
                             <p class="text-white font-medium text-sm">Projet Scolaire / Apprentissage</p>
                         </div>
 
-                        <!-- Boutons d'action (Seulement GitHub ici, pas de lien pour jouer) -->
                         <div class="pt-4 border-t border-gray-700 mt-4 flex flex-col gap-3">
-                            <a href="#" class="w-full py-3 bg-white text-black font-bold text-center rounded hover:bg-bastiaan-gold transition-colors uppercase text-sm tracking-wider">
+                            <button onclick="openPrivateModal()" class="w-full py-3 bg-white text-black font-bold text-center rounded hover:bg-bastiaan-gold transition-colors uppercase text-sm tracking-wider flex items-center justify-center">
                                 <i class="fa-brands fa-github mr-2"></i> Voir le code
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -148,5 +184,40 @@
     </footer>
     <script src="/js/script.js"></script>
 
+    <!-- FENÊTRE MODALE Dépôt Privé -->
+    <div id="privateModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm">
+        <div class="glass-panel p-8 rounded-xl max-w-md w-full mx-4 border border-bastiaan-gold modal-animate relative shadow-2xl">
+            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-black border-2 border-bastiaan-gold w-14 h-14 rounded-full flex items-center justify-center text-bastiaan-gold text-2xl">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div class="mt-6 text-center">
+                <h3 class="text-2xl font-heading font-bold text-white mb-4">Dépôt Privé</h3>
+                <p class="text-gray-300 text-sm mb-8 leading-relaxed">
+                    Ce projet est hébergé sur un <strong class="text-white">dépôt GitHub privé</strong>.<br><br>
+                    Le code source n'est pas accessible publiquement. N'hésitez pas à me <a href="mailto:bastiaan.vrijhof@etu.univ-lyon1.fr" class="text-bastiaan-gold underline hover:text-white transition-colors">contacter directement</a> si vous souhaitez en savoir plus sur l'implémentation.
+                </p>
+                <button onclick="closePrivateModal()" class="w-full py-3 bg-bastiaan-gold text-black font-bold rounded hover:bg-white transition-colors uppercase text-sm tracking-wider">
+                    J'ai compris
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openPrivateModal() {
+            const modal = document.getElementById('privateModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        function closePrivateModal() {
+            const modal = document.getElementById('privateModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('privateModal');
+            if (event.target == modal) closePrivateModal();
+        });
+    </script>
 </body>
 </html>

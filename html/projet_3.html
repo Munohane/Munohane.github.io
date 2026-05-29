@@ -77,6 +77,49 @@
                     </div>
                 </section>
                 
+                <!-- Zoom Technique -->
+                <section class="mt-8">
+                    <h3 class="text-xl font-heading font-bold text-white mb-4 flex items-center">
+                        <i class="fa-solid fa-magnifying-glass-code text-bastiaan-gold mr-3"></i> Zoom Technique
+                    </h3>
+                    <div class="glass-panel p-6 rounded-xl space-y-6">
+                        <div>
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-2">Défi : Pathfinding et comportement de foule</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Le cœur du jeu repose sur un algorithme de <strong class="text-white">pathfinding A*</strong> implémenté manuellement en Java. Chaque personnage (guidé ou guide-file) calcule son chemin optimal vers la sortie en évitant les cellules en feu et les autres agents. La propagation du feu est modélisée comme un automate cellulaire : chaque cellule a une probabilité de s'enflammer à chaque tick si une cellule voisine brûle.
+                            </p>
+                        </div>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-3">Extrait — Propagation du feu (Java / Processing)</p>
+                            <pre class="bg-black/60 rounded-lg p-4 text-xs text-green-300 overflow-x-auto border border-white/10 leading-relaxed"><code>// Mise à jour de la grille à chaque frame
+void updateFire() {
+    for (int x = 0; x < COLS; x++) {
+        for (int y = 0; y < ROWS; y++) {
+            if (grid[x][y] == FIRE) {
+                // Propagation aux 4 voisins avec probabilité
+                int[][] neighbors = {{x+1,y},{x-1,y},{x,y+1},{x,y-1}};
+                for (int[] n : neighbors) {
+                    if (inBounds(n[0], n[1]) && grid[n[0]][n[1]] == EMPTY) {
+                        if (random(1) < SPREAD_PROB) {
+                            nextGrid[n[0]][n[1]] = FIRE;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    grid = nextGrid.clone();
+}</code></pre>
+                        </div>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-2">Gestion des rôles agents</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Les agents "guidés" ont un comportement <strong class="text-white">passif</strong> : ils restent immobiles jusqu'à ce qu'un guide-file entre dans leur rayon de détection. Une fois pris en charge, ils suivent le guide via le même A* mais avec une vitesse réduite, simulant la panique. Le guide-file doit donc arbitrer entre vitesse et nombre de personnes à escorter simultanément.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Galerie d'images -->
                 <section class="mt-8">
                     <h3 class="text-xl font-heading font-bold text-white mb-4">Aperçu du Jeu</h3>

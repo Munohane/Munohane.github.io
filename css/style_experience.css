@@ -1,0 +1,65 @@
+body {
+    background-color: #050505;
+    background-image: radial-gradient(circle at 50% 0%, #111827 0%, #000000 80%);
+    color: #e5e7eb;
+}
+
+.text-gold-gradient {
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Carte en verre */
+.glass-card {
+    background: rgba(20, 20, 25, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Ligne de timeline */
+.timeline-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #1e3a8a, #d4af37, transparent);
+}
+
+/* Tags de compétences */
+.skill-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.skill-tag.blue {
+    background: rgba(30, 58, 138, 0.4);
+    color: #bfdbfe;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.skill-tag.gold {
+    background: rgba(180, 135, 40, 0.15);
+    color: #fde68a;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.skill-tag.gray {
+    background: rgba(55, 65, 81, 0.6);
+    color: #d1d5db;
+    border: 1px solid rgba(107, 114, 128, 0.4);
+}
+
+/* Couleurs Tailwind custom */
+.text-bastiaan-gold { color: #d4af37; }
+.text-bastiaan-blue { color: #1e3a8a; }
+.bg-bastiaan-gold   { background-color: #d4af37; }
+.bg-bastiaan-blue   { background-color: #1e3a8a; }
+.border-bastiaan-gold { border-color: #d4af37; }
+.border-bastiaan-blue { border-color: #1e3a8a; }
+.hover\:bg-bastiaan-gold:hover { background-color: #d4af37; }

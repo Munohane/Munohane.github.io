@@ -77,6 +77,45 @@
                     </div>
                 </section>
                 
+                <!-- Zoom Technique -->
+                <section class="mt-8">
+                    <h3 class="text-xl font-heading font-bold text-white mb-4 flex items-center">
+                        <i class="fa-solid fa-magnifying-glass-code text-bastiaan-gold mr-3"></i> Zoom Technique
+                    </h3>
+                    <div class="glass-panel p-6 rounded-xl space-y-6">
+                        <div>
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-2">Architecture MVC avec CakePHP</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Le projet suit strictement le pattern <strong class="text-white">MVC (Modèle-Vue-Contrôleur)</strong> imposé par CakePHP. Chaque entité (Adhérent, Événement, Inscription) possède son propre modèle avec ses règles de validation, son contrôleur pour la logique métier, et ses vues Twig. Les relations entre tables sont déclarées via les associations CakePHP (<code class="text-yellow-300">hasMany</code>, <code class="text-yellow-300">belongsToMany</code>), ce qui permet de charger les données liées en une seule requête grâce au <strong class="text-white">lazy loading</strong>.
+                            </p>
+                        </div>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-3">Extrait — Gestion des rôles et permissions (PHP)</p>
+                            <pre class="bg-black/60 rounded-lg p-4 text-xs text-green-300 overflow-x-auto border border-white/10 leading-relaxed"><code>// Dans AppController.php — vérification du rôle avant chaque action
+public function beforeFilter(EventInterface $event): void
+{
+    parent::beforeFilter($event);
+    $user = $this->Authentication->getIdentity();
+
+    // Seuls les admins et gérants peuvent accéder aux actions CRUD
+    $restrictedActions = ['add', 'edit', 'delete'];
+    if (in_array($this->request->getParam('action'), $restrictedActions)) {
+        if (!$user || !in_array($user->role, ['admin', 'gerant'])) {
+            $this->Flash->error('Accès refusé.');
+            return $this->redirect(['action' => 'index']);
+        }
+    }
+}</code></pre>
+                        </div>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-2">Modélisation de la base de données</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                La relation <strong class="text-white">N:N entre Adhérents et Événements</strong> est gérée via une table de jointure <code class="text-yellow-300">inscriptions</code> qui stocke également des métadonnées (date d'inscription, statut de présence). Cette approche évite la duplication de données et permet des requêtes agrégées efficaces pour les tableaux de bord administrateur.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Galerie d'images -->
                 <section class="mt-8">
                     <h3 class="text-xl font-heading font-bold text-white mb-4">Aperçu de la plateforme</h3>

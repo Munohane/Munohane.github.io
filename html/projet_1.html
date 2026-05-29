@@ -16,7 +16,7 @@
         <div class="hidden md:flex space-x-6 text-sm uppercase tracking-widest">
             <a href="presentation.html" class="hover:text-bastiaan-gold transition-colors">Présentation</a>
             <a href="projet.html" class="text-bastiaan-gold font-bold">Projets</a>
-            <a href="experience.php" class="hover:text-bastiaan-gold transition-colors">Expérience</a>
+            <a href="experience.html" class="hover:text-bastiaan-gold transition-colors">Expérience</a>
         </div>
     </nav>
 
@@ -70,6 +70,43 @@
                     </div>
                 </section>
                 
+                <!-- Zoom Technique -->
+                <section class="mt-8">
+                    <h3 class="text-xl font-heading font-bold text-white mb-4 flex items-center">
+                        <i class="fa-solid fa-magnifying-glass-code text-bastiaan-gold mr-3"></i> Zoom Technique
+                    </h3>
+                    <div class="glass-panel p-6 rounded-xl space-y-6">
+                        <!-- Choix architectural -->
+                        <div>
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-2">Défi : Simuler des altérations visuelles en temps réel</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Le principal défi technique était d'appliquer des effets visuels persistants (flou, masque central, distorsions) par-dessus le rendu 3D du Vision Pro sans impacter les performances. La solution retenue utilise un <strong class="text-white">RealityKit overlay</strong> combiné à des shaders Metal personnalisés appliqués en post-processing, ce qui permet de simuler le champ visuel rétréci du glaucome ou la tâche centrale de la DMLA sans modifier la scène 3D elle-même.
+                            </p>
+                        </div>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-3">Extrait — Shader de simulation du glaucome (Metal)</p>
+                            <pre class="bg-black/60 rounded-lg p-4 text-xs text-green-300 overflow-x-auto border border-white/10 leading-relaxed"><code>// Calcul de la distance au centre de l'écran
+float2 uv = in.texCoord - float2(0.5, 0.5);
+float dist = length(uv);
+
+// Rayon du champ visuel résiduel (0.0 = aveugle, 0.35 = léger)
+float radius = 0.28;
+float softEdge = smoothstep(radius, radius + 0.08, dist);
+
+// Assombrir progressivement vers les bords
+float4 color = colorTexture.sample(colorSampler, in.texCoord);
+color.rgb = mix(color.rgb, float3(0.0), softEdge);
+return color;</code></pre>
+                        </div>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-2">Apprentissage autodidacte</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                visionOS étant une plateforme très récente, aucun cours n'était disponible à l'IUT. L'ensemble de l'architecture a été apprise via la documentation Apple et des expérimentations directes sur simulateur, ce qui a nécessité de comprendre le cycle de vie spécifique des <strong class="text-white">ImmersiveSpace</strong> et la gestion des ancres spatiales avec <strong class="text-white">ARKit</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
                 <section class="mt-8">
                     <h3 class="text-xl font-heading font-bold text-white mb-4">Galerie</h3>
                     <div class="grid grid-cols-2 gap-4">

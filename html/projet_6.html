@@ -81,6 +81,45 @@
                     </div>
                 </section>
                 
+                <!-- Zoom Technique -->
+                <section class="mt-8">
+                    <h3 class="text-xl font-heading font-bold text-white mb-4 flex items-center">
+                        <i class="fa-solid fa-magnifying-glass-code text-bastiaan-gold mr-3"></i> Zoom Technique
+                    </h3>
+                    <div class="glass-panel p-6 rounded-xl space-y-6">
+                        <div>
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-2">Architecture : MVVM + Repository Pattern</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                L'application suit le pattern <strong class="text-white">MVVM (Model-View-ViewModel)</strong> recommandé par Google pour Android. Chaque écran possède son <code class="text-yellow-300">ViewModel</code> qui expose des <code class="text-yellow-300">StateFlow</code> observés par les Composables Jetpack. La couche données est isolée via un <strong class="text-white">Repository</strong> qui abstrait la source (API REST ou cache local Room), permettant de changer de source sans toucher à l'UI.
+                            </p>
+                        </div>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-3">Extrait — Gestion du timer de recharge des boosters (Kotlin)</p>
+                            <pre class="bg-black/60 rounded-lg p-4 text-xs text-green-300 overflow-x-auto border border-white/10 leading-relaxed"><code>// ViewModel — calcul du temps restant avant le prochain booster
+class BoosterViewModel(private val repo: BoosterRepository) : ViewModel() {
+
+    val boosterState: StateFlow&lt;BoosterUiState&gt; = repo.getBoosterFlow()
+        .map { booster ->
+            val remaining = booster.nextOpenTime - System.currentTimeMillis()
+            if (remaining <= 0) BoosterUiState.Ready
+            else BoosterUiState.Cooldown(remaining)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), BoosterUiState.Loading)
+
+    fun openBooster() = viewModelScope.launch {
+        repo.openBooster() // Appel API + mise à jour Room
+    }
+}</code></pre>
+                        </div>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="text-bastiaan-gold text-xs uppercase font-bold tracking-wider mb-2">API REST personnalisée</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Plutôt que d'utiliser directement la PokéAPI publique (trop volumineuse), une <strong class="text-white">API intermédiaire</strong> a été développée et déployée pour ne retourner que les champs nécessaires à l'app (nom, image, rareté, type). Cela réduit la taille des réponses de ~90% et permet d'ajouter des données custom (probabilités de drop par rareté) non présentes dans les APIs publiques.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Galerie d'images -->
                 <section class="mt-8">
                     <h3 class="text-xl font-heading font-bold text-white mb-4">Captures d'écran</h3>
@@ -134,11 +173,10 @@
                             <p class="text-white font-medium text-sm">Projet de développement Mobile</p>
                         </div>
 
-                        <!-- Boutons d'action -->
                         <div class="pt-4 border-t border-gray-700 mt-4 flex flex-col gap-3">
-                            <a href="#" class="w-full py-3 bg-white text-black font-bold text-center rounded hover:bg-bastiaan-gold transition-colors uppercase text-sm tracking-wider">
+                            <button onclick="openPrivateModal()" class="w-full py-3 bg-white text-black font-bold text-center rounded hover:bg-bastiaan-gold transition-colors uppercase text-sm tracking-wider flex items-center justify-center">
                                 <i class="fa-brands fa-github mr-2"></i> Voir le code
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -151,5 +189,41 @@
         <p>&copy; 2026 Bastiaan. Tous droits réservés.</p>
     </footer>
     <script src="/js/script.js"></script>
+
+    <!-- FENÊTRE MODALE Dépôt Privé -->
+    <div id="privateModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm">
+        <div class="glass-panel p-8 rounded-xl max-w-md w-full mx-4 border border-bastiaan-gold modal-animate relative shadow-2xl">
+            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-black border-2 border-bastiaan-gold w-14 h-14 rounded-full flex items-center justify-center text-bastiaan-gold text-2xl">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div class="mt-6 text-center">
+                <h3 class="text-2xl font-heading font-bold text-white mb-4">Dépôt Privé</h3>
+                <p class="text-gray-300 text-sm mb-8 leading-relaxed">
+                    Ce projet est hébergé sur un <strong class="text-white">dépôt GitHub privé</strong>.<br><br>
+                    Le code source n'est pas accessible publiquement. N'hésitez pas à me <a href="mailto:bastiaan.vrijhof@etu.univ-lyon1.fr" class="text-bastiaan-gold underline hover:text-white transition-colors">contacter directement</a> si vous souhaitez en savoir plus sur l'implémentation.
+                </p>
+                <button onclick="closePrivateModal()" class="w-full py-3 bg-bastiaan-gold text-black font-bold rounded hover:bg-white transition-colors uppercase text-sm tracking-wider">
+                    J'ai compris
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openPrivateModal() {
+            const modal = document.getElementById('privateModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        function closePrivateModal() {
+            const modal = document.getElementById('privateModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('privateModal');
+            if (event.target == modal) closePrivateModal();
+        });
+    </script>
 </body>
 </html>
